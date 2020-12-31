@@ -7,11 +7,8 @@ ENV LANG C.UTF-8
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        vim \
-        locales \
-        whois \
+        cups \
         avahi-daemon \
-        cups-bsd \
         printer-driver-all \
         printer-driver-gutenprint \
         hpijs-ppds \
