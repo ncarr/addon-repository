@@ -1,0 +1,41 @@
+{
+    "name": "CUPS Print Server",
+    "version": "1",
+    "slug": "cups",
+    "description": "A CUPS print server with Avahi installed",
+    "url": "https://github.com/ncarr/addon-cups",
+    "arch": [
+        "armhf",
+        "armv7",
+        "aarch64",
+        "amd64",
+        "i386"
+    ],
+    "startup": "system",
+    "boot": "auto",
+    "auth_api": true,
+    "ports": {
+        "631/tcp": 631,
+        "631/udp": 631
+    },
+    "ports_description": {
+        "631/tcp": "For other devices on the local network to manage and print to this server",
+        "631/udp": "For other devices on the local network to manage and print to this server"
+    },
+    "ingress": true,
+    "ingress_port": "631",
+    "map": ["ssl"],
+    "options": {
+        "ssl": true,
+        "certfile": "fullchain.pem",
+        "keyfile": "privkey.pem",
+        "require_ssl": true
+    },
+    "schema": {
+        "ssl": "bool",
+        "certfile": "str",
+        "keyfile": "str",
+        "require_ssl": "bool"
+    },
+    "image": "nicholascarr/{arch}-addon-cups"
+}
