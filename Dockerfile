@@ -5,9 +5,6 @@ LABEL io.hass.version="1" io.hass.type="addon" io.hass.arch="armhf|aarch64|i386|
 
 ENV LANG C.UTF-8
 
-WORKDIR /usr/src
-ARG HASSIO_AUTH_VERSION
-
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         vim \
@@ -21,32 +18,11 @@ RUN apt-get update \
         hp-ppd  \
         hplip \
         printer-driver-foo2zjs \
-        musl \
-        libcurl4 \
-        libpam0g \
-        musl-dev \
-        libcurl4-openssl-dev \
-        libpam0g-dev \
-        gcc \
-        git \
-        make \
-    && git clone --depth 1 -b $HASSIO_AUTH_VERSION https://github.com/home-assistant/hassio-auth \
-    && cd hassio-auth/pam \
-    && make \
-    && cp -f pam_hassio.so /lib/security/ \
-    && apt-get remove -y --purge \
-        musl-dev \
-        libcurl4-openssl-dev \
-        libpam0g-dev \
-        gcc \
-        git \
-        make \
     && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/* \
-    && rm -r /usr/src/hassio-auth
+    && rm -rf /var/lib/apt/lists/*
 
-COPY etc-cups/cupsd.conf /etc/cups/cupsd.conf
+COPY rootfs /
 
 EXPOSE 631
 
-ENTRYPOINT ["/usr/sbin/cupsd", "-f"]
+CMD ["/run.sh"]

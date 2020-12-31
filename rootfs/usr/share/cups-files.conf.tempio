@@ -1,0 +1,2 @@
+CreateSelfSignedCerts {{if .ssl}}no{{else}}yes{{end}}
+ServerKeychain {{if .ssl}}/ssl{{else}}/data/ssl{{end}}
