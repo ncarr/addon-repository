@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-alpha.4
+- Moved this changelog into the correct directory
+- Added exec command to run script
+- Fixed external hostname mapping
+
 ## 1.0.0-alpha.3
 
 - Added this changelog
