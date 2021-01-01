@@ -1,6 +1,6 @@
 {
     "name": "CUPS Print Server",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "slug": "cups",
     "description": "A CUPS print server with Avahi installed",
     "url": "https://github.com/ncarr/addon-repository",
@@ -11,9 +11,10 @@
         "amd64",
         "i386"
     ],
-    "startup": "system",
+    "startup": "application",
     "boot": "auto",
     "usb": "true",
+    "homeassistant_api": true,
     "ports": {
         "631/tcp": 631,
         "631/udp": 631

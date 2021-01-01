@@ -24,6 +24,12 @@ BrowseLocalProtocols dnssd
 DefaultAuthType Basic
 DefaultEncryption {{if .require_ssl}}Required{{else}}IfRequested{{end}}
 
+# Host header validation
+
+ServerAlias {{.hostname}}.local {{.internal}} {{.external}}
+
+ServerName {{.hostname}}
+
 # Web interface setting...
 WebInterface Yes
 
