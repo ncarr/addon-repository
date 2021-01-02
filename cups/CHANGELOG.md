@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-alpha.7
+
+- Normalized line endings to LF
+
 ## 1.0.0-alpha.6
 
 - Replaced execlineb with sh
