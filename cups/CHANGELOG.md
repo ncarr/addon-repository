@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-alpha.6
+
+- Replaced execlineb with sh
+- Removed debug info for ingress
+- Added nginx to proxy requests for ingress
+
 ## 1.0.0-alpha.5
 
 - Replaced bashio with execlineb in service script

@@ -15,6 +15,7 @@ RUN apt-get update \
         hp-ppd  \
         hplip \
         printer-driver-foo2zjs \
+        nginx \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 

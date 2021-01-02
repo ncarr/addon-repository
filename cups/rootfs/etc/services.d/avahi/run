@@ -1,2 +1,2 @@
-#!/usr/bin/execlineb -P
-avahi-daemon
+#!/usr/bin/sh
+exec avahi-daemon

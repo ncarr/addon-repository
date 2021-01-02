@@ -17,7 +17,4 @@ tempio \
     -template /usr/share/cups-files.conf.tempio \
     -out /etc/cups/cups-files.conf
 
-# DEBUG
-bashio::addons self 'addons.self' '.'
-
 /usr/sbin/cupsd -f
