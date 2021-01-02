@@ -9,6 +9,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         cups \
         avahi-daemon \
+        dbus \
         printer-driver-all \
         printer-driver-gutenprint \
         hpijs-ppds \

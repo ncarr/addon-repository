@@ -1,8 +1,12 @@
 # Changelog
 
+## 1.0.0-alpha.10
+
+- Added a D-Bus daemon into the container directly
+
 ## 1.0.0-alpha.9
 
-- Mapped the host DBus service into the container
+- Mapped the host D-Bus service into the container
 - Added an events section to nginx.conf
 
 ## 1.0.0-alpha.8
