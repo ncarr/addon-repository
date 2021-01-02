@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-alpha.9
+
+- Mapped the host DBus service into the container
+- Added an events section to nginx.conf
+
 ## 1.0.0-alpha.8
 
 - Fixed shebang to point to /bin/sh instead of /usr/bin/sh
