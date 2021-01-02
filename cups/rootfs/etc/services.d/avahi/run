@@ -1,3 +1,2 @@
-#!/usr/bin/with-contenv bashio
-
-exec avahi-daemon
+#!/usr/bin/execlineb -P
+avahi-daemon

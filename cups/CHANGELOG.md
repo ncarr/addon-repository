@@ -1,6 +1,12 @@
 # Changelog
 
+## 1.0.0-alpha.5
+
+- Replaced bashio with execlineb in service script
+- Added debug info for ingress
+
 ## 1.0.0-alpha.4
+
 - Moved this changelog into the correct directory
 - Added exec command to run script
 - Fixed external hostname mapping
