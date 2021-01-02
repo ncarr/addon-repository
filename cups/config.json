@@ -1,6 +1,6 @@
 {
     "name": "CUPS Print Server",
-    "version": "1.0.0-alpha.10",
+    "version": "1.0.0-alpha.11",
     "slug": "cups",
     "description": "A CUPS print server with Avahi installed",
     "url": "https://github.com/ncarr/addon-repository",
@@ -24,6 +24,7 @@
         "631/udp": "For other devices on the local network to print to this server"
     },
     "ingress": true,
+    "ingress_port": 8099,
     "map": ["ssl"],
     "options": {
         "ssl": true,
