@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.0-alpha.12
+
+- Attempted to remove D-Bus
+
+## 1.0.0-alpha.11
+
+- Turned off D-Bus support in Avahi
+- Created a folder for D-Bus to store its socket
+
 ## 1.0.0-alpha.10
 
 - Added a D-Bus daemon into the container directly
