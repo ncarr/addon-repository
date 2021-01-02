@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-alpha.8
+
+- Fixed shebang to point to /bin/sh instead of /usr/bin/sh
+
 ## 1.0.0-alpha.7
 
 - Normalized line endings to LF
