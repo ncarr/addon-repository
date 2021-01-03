@@ -17,4 +17,6 @@ tempio \
     -template /usr/share/cups-files.conf.tempio \
     -out /etc/cups/cups-files.conf
 
+sleep 10
+
 /usr/sbin/cupsd -f

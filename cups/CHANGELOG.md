@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-alpha.13
+
+- Added a delay so CUPS starts after Avahi is up
+- Debug: removed IP filter on ingress controller
+
 ## 1.0.0-alpha.12
 
 - Attempted to remove D-Bus
