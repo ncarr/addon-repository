@@ -1,5 +1,9 @@
 # Changelog
 
+# 1.0.0-alpha.16
+
+- Flipped order of arguments in ln command
+
 # 1.0.0-alpha.15
 
 - Fixed bug in run.sh caused by a variable in an if statement
