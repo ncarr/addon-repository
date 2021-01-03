@@ -3,13 +3,12 @@
 # Create links for certificates with CUPS' expected filenames
 bashio::config.require.ssl
 
-ssl=[ bashio::config.true ssl ]
 keyfile=$(bashio::config keyfile)
 certfile=$(bashio::config certfile)
 cafile=$(bashio::config cafile)
 hostname=$(bashio::info.hostname)
 
-if ssl; then
+if bashio::config.true ssl; then
     if [ $cafile != null ] && [ -e "/ssl/$cafile" ]; then
         ln -s /data/ssl/site.crt "/ssl/$cafile"
     fi
