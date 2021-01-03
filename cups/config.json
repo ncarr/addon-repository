@@ -1,6 +1,6 @@
 {
     "name": "CUPS Print Server",
-    "version": "1.0.0-alpha.13",
+    "version": "1.0.0-alpha.14",
     "slug": "cups",
     "description": "A CUPS print server with Avahi installed",
     "url": "https://github.com/ncarr/addon-repository",
@@ -28,10 +28,15 @@
     "map": ["ssl"],
     "options": {
         "ssl": true,
+        "certfile": "fullchain.pem",
+        "keyfile": "privkey.pem",
         "require_ssl": true
     },
     "schema": {
         "ssl": "bool",
+        "cafile": "str?",
+        "certfile": "str",
+        "keyfile": "str",
         "require_ssl": "bool"
     },
     "image": "nicholascarr/{arch}-addon-cups"

@@ -22,7 +22,7 @@ BrowseLocalProtocols dnssd
 
 # Default authentication type, when authentication is required...
 DefaultAuthType Basic
-DefaultEncryption {{if .require_ssl}}Required{{else}}IfRequested{{end}}
+DefaultEncryption Required
 
 # Host header validation
 
@@ -37,6 +37,7 @@ WebInterface Yes
 <Location />
   Order allow,deny
   Allow all
+  Encryption {{if .require_ssl}}Required{{else}}IfRequested{{end}}
 </Location>
 
 # Restrict access to the admin pages...

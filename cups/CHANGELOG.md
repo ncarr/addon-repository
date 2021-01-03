@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-alpha.14
+
+- Added D-Bus back
+- Fixed SSL support for CUPS - new config options
+- Added startup dependencies for CUPS and Avahi
+
 ## 1.0.0-alpha.13
 
 - Added a delay so CUPS starts after Avahi is up

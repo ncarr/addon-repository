@@ -1,11 +1,29 @@
 #!/usr/bin/with-contenv bashio
 
+# Create links for certificates with CUPS' expected filenames
+bashio::config.require.ssl
+
+ssl=[ bashio::config.true ssl ]
+keyfile=$(bashio::config keyfile)
+certfile=$(bashio::config certfile)
+cafile=$(bashio::config cafile)
+hostname=$(bashio::info.hostname)
+
+if ssl; then
+    if [ $cafile != null ] && [ -e "/ssl/$cafile" ]; then
+        ln -s /data/ssl/site.crt "/ssl/$cafile"
+    fi
+    mkdir -p /data/ssl
+    ln -s "/data/ssl/$hostname.key" "/ssl/$keyfile"
+    ln -s "/data/ssl/$hostname.crt" "/ssl/$certfile"
+fi
+
 # Get all possible hostnames from configuration
 result=$(bashio::api.supervisor GET /core/api/config true || true)
 internal=$(bashio::jq "${result}" '.internal_url' | cut -d'/' -f3 | cut -d':' -f1)
 external=$(bashio::jq "${result}" '.external_url' | cut -d'/' -f3 | cut -d':' -f1)
-hostname=$(bashio::info.hostname)
 
+# Fill config file templates with runtime data
 jq --arg internal "${internal}" --arg external "${external}" --arg hostname "${hostname}" \
     '{ssl: .ssl, require_ssl: .require_ssl, internal: $internal, external: $external, hostname: $hostname}' \
     /data/options.json | tempio \
@@ -17,6 +35,10 @@ tempio \
     -template /usr/share/cups-files.conf.tempio \
     -out /etc/cups/cups-files.conf
 
-sleep 10
+# Wait for Avahi to start up
+until [ -e /var/run/avahi-daemon/socket ]; do
+  sleep 1s
+done
 
+# Start CUPS
 /usr/sbin/cupsd -f
