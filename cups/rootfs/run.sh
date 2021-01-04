@@ -1,7 +1,11 @@
 #!/usr/bin/with-contenv bashio
 
+echo "Started"
+
 # Create links for certificates with CUPS' expected filenames
 bashio::config.require.ssl
+
+echo "SSL config valid"
 
 keyfile=$(bashio::config keyfile)
 certfile=$(bashio::config certfile)
@@ -10,9 +14,13 @@ hostname=$(bashio::info.hostname)
 
 mkdir -p /data/ssl
 
+echo "mkdir worked"
+
 rm -f /data/ssl/site.crt
 rm -f "/data/ssl/$hostname.key"
 rm -f "/data/ssl/$hostname.crt"
+
+echo "rm worked"
 
 if [ $cafile != null ] && [ -e "/ssl/$cafile" ]; then
     ln -s "/ssl/$cafile" /data/ssl/site.crt
@@ -22,6 +30,8 @@ if bashio::config.true ssl; then
     ln -s "/ssl/$keyfile" "/data/ssl/$hostname.key"
     ln -s "/ssl/$certfile" "/data/ssl/$hostname.crt"
 fi
+
+echo "ssl ln worked"
 
 # Get all possible hostnames from configuration
 result=$(bashio::api.supervisor GET /core/api/config true || true)
@@ -40,10 +50,22 @@ tempio \
     -template /usr/share/cups-files.conf.tempio \
     -out /etc/cups/cups-files.conf
 
+echo "templating worked"
+
 # Wait for Avahi to start up
 until [ -e /var/run/avahi-daemon/socket ]; do
   sleep 1s
 done
+
+echo "avahi up"
+
+# DEBUG
+/usr/sbin/cupsd -ft
+
+echo "test complete"
+
+# DEBUG
+sleep 120
 
 # Start CUPS
 /usr/sbin/cupsd -f

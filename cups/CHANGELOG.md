@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-alpha.18
+
+- Fixed nginx.conf typo
+- Debug: print debugging in run.sh
+
 ## 1.0.0-alpha.17
 
 - Persisted all CUPS configuration
