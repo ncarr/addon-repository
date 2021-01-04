@@ -10,7 +10,7 @@ function api(r) {
             } else if (res.status !== 200) {
                 throw new Error('HTTP ' + res.status);
             }
-            const parsed = JSON.parse(res.responseBody);
+            var parsed = JSON.parse(res.responseBody);
             if (parsed.result === 'error') {
                 throw new Error('Response: ' + parsed.message);
             }

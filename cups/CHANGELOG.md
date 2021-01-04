@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.0.0-alpha.19
+
+- Replaced const with var in http.js
+- Automatically generated /data/cups on first run
+
 ## 1.0.0-alpha.18
 
 - Fixed nginx.conf typo
