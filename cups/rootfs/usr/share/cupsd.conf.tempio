@@ -19,6 +19,7 @@ Listen /var/run/cups/cups.sock
 # Show shared printers on the local network.
 Browsing On
 BrowseLocalProtocols dnssd
+DNSSDHostName {{.hostname}}.local
 
 # Default authentication type, when authentication is required...
 DefaultAuthType Basic

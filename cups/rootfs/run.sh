@@ -8,11 +8,17 @@ certfile=$(bashio::config certfile)
 cafile=$(bashio::config cafile)
 hostname=$(bashio::info.hostname)
 
+mkdir -p /data/ssl
+
+rm -f /data/ssl/site.crt
+rm -f "/data/ssl/$hostname.key"
+rm -f "/data/ssl/$hostname.crt"
+
+if [ $cafile != null ] && [ -e "/ssl/$cafile" ]; then
+    ln -s "/ssl/$cafile" /data/ssl/site.crt
+fi
+
 if bashio::config.true ssl; then
-    if [ $cafile != null ] && [ -e "/ssl/$cafile" ]; then
-        ln -s "/ssl/$cafile" /data/ssl/site.crt
-    fi
-    mkdir -p /data/ssl
     ln -s "/ssl/$keyfile" "/data/ssl/$hostname.key"
     ln -s "/ssl/$certfile" "/data/ssl/$hostname.crt"
 fi

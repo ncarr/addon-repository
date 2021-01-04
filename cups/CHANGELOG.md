@@ -1,10 +1,20 @@
 # Changelog
 
-# 1.0.0-alpha.16
+## 1.0.0-alpha.17
+
+- Persisted all CUPS configuration
+- Refreshed all certificates on startup
+- Added a CSP on ingress to disable the CUPS frame-blocker
+- Rewrote absolute page URLs on ingress to point to the proxied URL
+- Redirected printer advertisements to the domain name of the Home Assistant installation
+- Disabled mDNS address responses for the container
+- Added more default drivers
+
+## 1.0.0-alpha.16
 
 - Flipped order of arguments in ln command
 
-# 1.0.0-alpha.15
+## 1.0.0-alpha.15
 
 - Fixed bug in run.sh caused by a variable in an if statement
 

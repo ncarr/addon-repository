@@ -1,2 +1,3 @@
-CreateSelfSignedCerts {{if .ssl}}no{{else}}yes{{end}}
+ServerRoot /data/cups
 ServerKeychain /data/ssl
+CreateSelfSignedCerts {{if .ssl}}no{{else}}yes{{end}}
