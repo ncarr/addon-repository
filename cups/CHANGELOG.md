@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-alpha.21
+
+- Debug: increased CUPS log level
+
 ## 1.0.0-alpha.20
 
 - Removed debugging print statements from run.sh
