@@ -1,6 +1,13 @@
 # Changelog
 
-# 1.0.0-alpha.19
+## 1.0.0-alpha.20
+
+- Removed debugging print statements from run.sh
+- Added export statement to http.js
+- Mapped Home Assistant hostname into avahi-daemon.conf
+- Removed DNSSDHostName key from cupsd.conf (introduced in later version)
+
+## 1.0.0-alpha.19
 
 - Replaced const with var in http.js
 - Automatically generated /data/cups on first run

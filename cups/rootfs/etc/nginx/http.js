@@ -19,3 +19,5 @@ function api(r) {
         })
         .catch(e => r.return(500, 'Addon info API error: ' + e));
 }
+
+export default {api};

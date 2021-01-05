@@ -25,20 +25,25 @@ fi
 
 # Get all possible hostnames from configuration
 result=$(bashio::api.supervisor GET /core/api/config true || true)
-internal=$(bashio::jq "${result}" '.internal_url' | cut -d'/' -f3 | cut -d':' -f1)
-external=$(bashio::jq "${result}" '.external_url' | cut -d'/' -f3 | cut -d':' -f1)
+internal=$(bashio::jq "$result" '.internal_url' | cut -d'/' -f3 | cut -d':' -f1)
+external=$(bashio::jq "$result" '.external_url' | cut -d'/' -f3 | cut -d':' -f1)
 
 # Fill config file templates with runtime data
-jq --arg internal "${internal}" --arg external "${external}" --arg hostname "${hostname}" \
+config=$(jq --arg internal "$internal" --arg external "$external" --arg hostname "$hostname" \
     '{ssl: .ssl, require_ssl: .require_ssl, internal: $internal, external: $external, hostname: $hostname}' \
-    /data/options.json | tempio \
+    /data/options.json)
+
+echo "$config" | tempio \
     -template /usr/share/cupsd.conf.tempio \
     -out /etc/cups/cupsd.conf
 
-tempio \
-    -conf /data/options.json \
+echo "$config" | tempio \
     -template /usr/share/cups-files.conf.tempio \
     -out /etc/cups/cups-files.conf
+
+echo "$config" | tempio \
+    -template /usr/share/avahi-daemon.conf.tempio \
+    -out /etc/avahi/avahi-daemon.conf
 
 mkdir -p /data/cups
 
@@ -46,14 +51,6 @@ mkdir -p /data/cups
 until [ -e /var/run/avahi-daemon/socket ]; do
   sleep 1s
 done
-
-# DEBUG
-/usr/sbin/cupsd -ft
-
-echo "test complete"
-
-# DEBUG
-sleep 120
 
 # Start CUPS
 /usr/sbin/cupsd -f
