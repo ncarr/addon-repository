@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0-alpha.22
+
+- Removed debug log level in CUPS
+- Made Avahi wait to be configured before starting
+
 ## 1.0.0-alpha.21
 
 - Debug: increased CUPS log level

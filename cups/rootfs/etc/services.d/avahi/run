@@ -1,6 +1,7 @@
 #!/bin/sh
 
-until [ -e /var/run/dbus/system_bus_socket ]; do
+# Wait until D-Bus is up and the init script has mapped in the external hostname
+until [ -e /var/run/dbus/system_bus_socket ] && [ -e /var/run/avahi_configured ]; do
   sleep 1s
 done
 

@@ -47,7 +47,8 @@ echo "$config" | tempio \
 
 mkdir -p /data/cups
 
-# Wait for Avahi to start up
+# Start Avahi, wait for it to start up
+touch /var/run/avahi_configured
 until [ -e /var/run/avahi-daemon/socket ]; do
   sleep 1s
 done
