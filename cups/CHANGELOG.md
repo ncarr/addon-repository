@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0-alpha.23
+
+- Fixed Avahi config to use D-Bus again
+- Made Nginx authenticate supervisor requests
+- Used container fqdn instead of Home Assistant hostname for certificate filenames
+
 ## 1.0.0-alpha.22
 
 - Removed debug log level in CUPS

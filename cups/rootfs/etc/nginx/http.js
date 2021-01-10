@@ -1,4 +1,5 @@
 function api(r) {
+    r.variables.supervisor_token = process.env.SUPERVISOR_TOKEN;
     r.subrequest('/info')
         .then(res => {
             if (res.status === 401) {
@@ -10,7 +11,7 @@ function api(r) {
             } else if (res.status !== 200) {
                 throw new Error('HTTP ' + res.status);
             }
-            var parsed = JSON.parse(res.responseBody);
+            var parsed = JSON.parse(res.responseText);
             if (parsed.result === 'error') {
                 throw new Error('Response: ' + parsed.message);
             }

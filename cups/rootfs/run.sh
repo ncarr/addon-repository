@@ -7,20 +7,20 @@ keyfile=$(bashio::config keyfile)
 certfile=$(bashio::config certfile)
 cafile=$(bashio::config cafile)
 hostname=$(bashio::info.hostname)
+fqdn=$(hostname --fqdn)
 
 mkdir -p /data/ssl
 
-rm -f /data/ssl/site.crt
-rm -f "/data/ssl/$hostname.key"
-rm -f "/data/ssl/$hostname.crt"
-
 if [ $cafile != null ] && [ -e "/ssl/$cafile" ]; then
+    rm -f /data/ssl/site.crt
     ln -s "/ssl/$cafile" /data/ssl/site.crt
 fi
 
 if bashio::config.true ssl; then
-    ln -s "/ssl/$keyfile" "/data/ssl/$hostname.key"
-    ln -s "/ssl/$certfile" "/data/ssl/$hostname.crt"
+    rm -f "/data/ssl/$fqdn.key"
+    rm -f "/data/ssl/$fqdn.crt"
+    ln -s "/ssl/$keyfile" "/data/ssl/$fqdn.key"
+    ln -s "/ssl/$certfile" "/data/ssl/$fqdn.crt"
 fi
 
 # Get all possible hostnames from configuration
