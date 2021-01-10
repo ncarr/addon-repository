@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-alpha.24
+
+- Modified Nginx configuration to get the authentication token from JS
+
 ## 1.0.0-alpha.23
 
 - Fixed Avahi config to use D-Bus again

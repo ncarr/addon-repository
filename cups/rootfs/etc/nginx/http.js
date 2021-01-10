@@ -1,5 +1,6 @@
+var supervisor_token = () => process.env.SUPERVISOR_TOKEN;
+
 function api(r) {
-    r.variables.supervisor_token = process.env.SUPERVISOR_TOKEN;
     r.subrequest('/info')
         .then(res => {
             if (res.status === 401) {
@@ -21,4 +22,4 @@ function api(r) {
         .catch(e => r.return(500, 'Addon info API error: ' + e));
 }
 
-export default {api};
+export default {api, supervisor_token};
