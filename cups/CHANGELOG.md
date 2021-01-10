@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0-alpha.25
+
+- Used documented ingress path header for rewrites, removed JS
+
 ## 1.0.0-alpha.24
 
 - Modified Nginx configuration to get the authentication token from JS
